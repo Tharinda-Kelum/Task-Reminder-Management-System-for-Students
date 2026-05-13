@@ -1,0 +1,30 @@
+{
+  "name": "task-and-reminder-management-system-for-students",
+  "version": "1.0.0",
+  "description": "Students often struggle to manage assignments, deadlines, and reminders effectively. This leads to missed submissions and poor time management.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tharinda-Kelum/Task-Reminder-Management-System-for-Students.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Tharinda-Kelum/Task-Reminder-Management-System-for-Students/issues"
+  },
+  "homepage": "https://github.com/Tharinda-Kelum/Task-Reminder-Management-System-for-Students#readme",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
