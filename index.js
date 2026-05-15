@@ -1,16 +1,15 @@
-import mongoose from 'mongoose';
+import express from 'express';
 import dotenv from 'dotenv';
+import connectDB from './db.js';
+import routes from './Routes/routes.js';
 
 dotenv.config();
+connectDB();
 
-const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(process.env.MONGO_URI);
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.error(`Error: ${error.message}`);
-    process.exit(1);
-  }
-};
+const app = express();
+app.use(express.json());
 
-export default connectDB;
+app.use('/api', routes);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
