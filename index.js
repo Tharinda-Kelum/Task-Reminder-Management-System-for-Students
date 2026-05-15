@@ -1,15 +1,28 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import connectDB from './db.js';
-import routes from './Routes/routes.js';
+import express from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import dotenv from "dotenv";
 
-dotenv.config();
-connectDB();
+import route from "./Routes/routes.js";
 
 const app = express();
-app.use(express.json());
 
-app.use('/api', routes);
+app.use(bodyParser.json());
+
+dotenv.config();
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+const MONGOURL = process.env.MONGO_URL;
+
+mongoose
+.connect(MONGOURL)
+.then(() => {
+    console.log("Database connected successfully.");
+    app.listen(PORT, () => {
+        console.log(`Server is running on port : ${PORT}`);
+    });
+})
+.catch((error) => console.log(error));
+
+app.use("/api", route);
