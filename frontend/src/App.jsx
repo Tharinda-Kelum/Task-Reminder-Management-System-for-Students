@@ -12,33 +12,85 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div style={{ 
+      minHeight: '100vh', 
+      display: 'flex', 
+      flexDirection: 'column',
+      background: 'linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 50%, #E2E8F0 100%)',
+      fontFamily: 'system-ui, -apple-system, sans-serif'
+    }}>
       {!token ? (
         <Login setToken={setToken} />
       ) : (
         <>
-          {/* Production-Grade App Header */}
-          <nav className="bg-white/80 border-b border-slate-200/80 px-6 py-4 flex justify-between items-center sticky top-0 z-50 shadow-sm backdrop-blur-md">
-            <div className="flex items-center gap-3">
-              <div className="bg-gradient-to-tr from-blue-600 to-indigo-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20">
-                <GraduationCap className="text-white" size={22} />
+          {/* Professional Navigation Bar */}
+          <nav style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.85)',
+            borderBottom: '1px solid #E2E8F0',
+            padding: '16px 32px',
+            display: 'flex',
+            justifyContent: 'between',
+            alignItems: 'center',
+            position: 'sticky',
+            top: 0,
+            zIndex: 50,
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.02)',
+            justifyContent: 'space-between'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{
+                background: 'linear-gradient(135deg, #2563EB 0%, #4F46E5 100%)',
+                padding: '10px',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 4px 12px rgba(37, 99, 235, 0.2)'
+              }}>
+                <GraduationCap className="text-white" style={{ color: '#ffffff' }} size={20} />
               </div>
               <div>
-                <span className="text-xl font-black bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900 tracking-tight">
-                  EduTask<span className="text-blue-600">.Pro</span>
+                <span style={{ fontSize: '18px', fontWeight: '900', color: '#0F172A', letterSpacing: '-0.025em' }}>
+                  EduTask<span style={{ color: '#2563EB' }}>.Pro</span>
                 </span>
               </div>
             </div>
+            
             <button 
               onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 text-sm font-bold text-slate-600 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-all duration-150 border border-transparent hover:border-rose-100"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 18px',
+                fontSize: '14px',
+                fontWeight: '700',
+                color: '#64748B',
+                backgroundColor: 'transparent',
+                border: '1px solid #E2E8F0',
+                borderRadius: '12px',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.color = '#EF4444';
+                e.currentTarget.style.backgroundColor = '#FEF2F2';
+                e.currentTarget.style.borderColor = '#FCA5A5';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.color = '#64748B';
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.borderColor = '#E2E8F0';
+              }}
             >
-              <LogOut size={16} />
+              <LogOut size={15} />
               Logout
             </button>
           </nav>
-          
-          <main className="flex-1">
+
+          <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
             <Dashboard />
           </main>
         </>
